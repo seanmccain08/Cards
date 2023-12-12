@@ -57,5 +57,10 @@ public class DeckOfCards{
         return result;
 
     }
+    public void shuffle(){
+
+
+
+    }
 
 }

@@ -21,7 +21,7 @@ public class Card{
             result = "Ace of "+suit;
 
         }
-        if(tier == 11){
+        else if(tier == 11){
 
             result = "Jack of "+suit;
 
@@ -38,7 +38,7 @@ public class Card{
         }
         else{
 
-            result = (tier+1)+" of "+suit;
+            result = (tier)+" of "+suit;
 
         }
         return result;
