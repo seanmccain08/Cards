@@ -10,17 +10,16 @@ class Main {
     */
         Scanner scan = new Scanner(System.in);
         DeckOfCards deck = new DeckOfCards();
-        System.out.println(deck.toString());
-        System.out.println("Deck initialized!");
         boolean playing = true;
 
         while(playing){
 
-            System.out.println("1. Shuffle Deck\n2. View deck\n3. Deal all cards...\n4. Deal a specified amount of cards...\n5. Quit");
+            System.out.println("1. View Deck\n2. Shuffle Deck\n3. Deal all cards...\n4. Deal a specified amount of cards...\n5. Quit");
             int choice = scan.nextInt();
             switch(choice){
 
                 case 1:
+                    System.out.println(deck.toString());
                     break;
 
                 case 2:

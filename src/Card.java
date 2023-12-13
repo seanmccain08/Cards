@@ -2,46 +2,65 @@ public class Card{
 
     private String name;
     private int tier;
-    private String suit;
-    private int id;
+    private int suit;
+    private boolean inDeck;
 
-    public Card(String name0, int tier0, String suit0, int id0){
+    public Card(int tier0, int suit0){
 
-        name = name0;
         tier = tier0;
         suit = suit0;
-        id = id0;
-
-    }
-    public String toString(){
-
-        String result = "";
+        inDeck = true;
+        name = "";
         if(tier == 1){
 
-            result = "Ace of "+suit;
+            name+="Ace of ";
 
         }
         else if(tier == 11){
 
-            result = "Jack of "+suit;
+            name+="Jack of ";
 
         }
         else if(tier == 12){
 
-            result = "Queen of "+suit;
+            name+="Queen of ";
 
         }
         else if(tier == 13){
 
-            result = "King of "+suit;
+            name+="King of ";
 
         }
         else{
 
-            result = (tier)+" of "+suit;
+            name+= tier+" of ";
 
         }
-        return result;
+        if(suit == 1){
+
+            name+="Spades";
+
+        }
+        else if(suit == 2){
+
+            name+="Hearts";
+
+        }
+        else if(suit == 3){
+
+            name+="Diamonds";
+
+        }
+        else{
+
+            name+="Clubs";
+
+        }
+
+    }
+    public String toString(){
+
+        return name;
 
     }
 
