@@ -23,6 +23,7 @@ class Main {
                     break;
 
                 case 2:
+                    deck.shuffle();
                     break;
 
                 case 3:

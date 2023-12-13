@@ -36,11 +36,15 @@ public class DeckOfCards{
     }
     public void shuffle(){
 
-        for(int i = 0; i <= 50; i++){
+        for(int i = 0; i < 52; i++){
 
-
+            int rand = (int)(Math.random()*51+1);
+            Card temp = deck0[rand];
+            deck0[rand] = deck0[i];
+            deck0[i] = temp;
 
         }
+        System.out.println("Deck successfully shuffled!");
 
     }
 
