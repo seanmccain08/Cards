@@ -51,7 +51,7 @@ public class DeckOfCards{
 
         if(deck0.size() < 52){
 
-            System.out.println("Cards have already been dealt. To shuffle, create a new deck.");
+            System.out.println("Cards have been dealt. To shuffle, create a new deck.");
 
         }
         else {
@@ -63,7 +63,6 @@ public class DeckOfCards{
                 deck0.set(i, temp);
 
             }
-            System.out.println("Deck successfully shuffled!");
         }
 
     }
@@ -90,7 +89,6 @@ public class DeckOfCards{
                     }
 
                 }
-                System.out.println("Successfully dealt the deck.");
                 break;
 
             case 3:
@@ -119,7 +117,6 @@ public class DeckOfCards{
                     }
 
                 }
-                System.out.println("Successfully dealt the deck.");
                 break;
 
             case 4:
@@ -155,7 +152,6 @@ public class DeckOfCards{
                     }
 
                 }
-                System.out.println("Successfully dealt the deck.");
                 break;
 
             default:
@@ -165,5 +161,104 @@ public class DeckOfCards{
 
     }
 
+    public void deal(int players, int cards){
+
+        switch(players){
+
+            case 2:
+                if(cards > deck0.size()){
+
+                    System.out.println("Not enough cards in the deck!");
+
+                }
+                for(int i = 0, player = 0; i<cards*2; i++){
+
+                    if(player == 0){
+
+                        player = 1;
+                        hand1.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+                    else{
+
+                        player = 0;
+                        hand2.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+
+                }
+                break;
+
+            case 3:
+                for(int i = 0, player = 0; i<cards*3; i++){
+
+                    if(player == 0){
+
+                        player = 1;
+                        hand1.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+                    else if(player == 1){
+
+                        player = 2;
+                        hand2.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+                    else{
+
+                        player = 0;
+                        hand3.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+
+                }
+                break;
+
+            case 4:
+                for(int i = 0, player = 0; i<cards*4; i++){
+
+                    if(player == 0){
+
+                        player = 1;
+                        hand1.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+                    else if(player == 1){
+
+                        player = 2;
+                        hand2.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+                    else if(player == 2){
+
+                        player = 3;
+                        hand3.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+                    else{
+
+                        player = 0;
+                        hand3.add(deck0.get(0));
+                        deck0.remove(0);
+
+                    }
+
+                }
+                break;
+
+            default:
+                System.out.println("Please enter a valid amount of players.");
+
+        }
+
+    }
 
 }

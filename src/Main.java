@@ -11,6 +11,7 @@ class Main {
         Scanner scan = new Scanner(System.in);
         DeckOfCards deck = new DeckOfCards();
         boolean playing = true;
+        int players = 0;
 
         while(playing){
 
@@ -27,16 +28,42 @@ class Main {
                     break;
 
                 case 3:
-                    deck.shuffle();
+                    System.out.println("How many times do you want to shuffle?");
+                    choice = scan.nextInt();
+                    if(choice < 0){
+
+                        choice = 0;
+
+                    }
+                    for(int i = 0; i < choice; i++){
+
+                        deck.shuffle();
+
+                    }
+                    if(choice == 1){
+
+                        System.out.println("Successfully shuffled the deck "+choice+" time.");
+
+                    }
+                    else{
+
+                        System.out.println("Successfully shuffled the deck "+choice+" times.");
+
+                    }
                     break;
 
                 case 4:
                     System.out.println("How many players? (2-4)");
-                    choice = scan.nextInt();
-                    deck.deal(choice);
+                    players = scan.nextInt();
+                    deck.deal(players);
                     break;
 
                 case 5:
+                    System.out.println("How many players? (2-4)");
+                    players = scan.nextInt();
+                    System.out.println("How many cards would you like to deal for each player?");
+                    int cards = scan.nextInt();
+                    deck.deal(players, cards);
                     break;
 
                 case 6:
