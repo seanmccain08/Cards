@@ -15,12 +15,13 @@ class Main {
 
         while(playing){
 
-            System.out.println("1. Create a deck...\n2. View Deck\n3. Shuffle Deck\n4. Deal all cards...\n5. Deal a specified amount of cards...\n6. Quit");
+            System.out.println("1. Create a deck...\n2. View Deck\n3. Shuffle Deck\n4. Deal all cards...\n5. Deal a specified amount of cards...\n6. View hand...\n7. Burn top card\n8. Flip a card\n9. Show top card\n10. Quit...");
             int choice = scan.nextInt();
             switch(choice){
 
                 case 1:
                     deck = new DeckOfCards();
+                    DeckOfCards.clearHands();
                     break;
 
                 case 2:
@@ -67,6 +68,23 @@ class Main {
                     break;
 
                 case 6:
+                    System.out.println("Whose hand would you like to view?\n1. Player 1\n2. Player 2\n3. Player 3\n4. Player 4\n5. Show All");
+                    System.out.println(deck.showHand(scan.nextInt()));
+                    break;
+
+                case 7:
+                    deck.burn();
+                    break;
+
+                case 8:
+                    deck.flip();
+                    break;
+
+                case 9:
+                    System.out.println(deck.getTopCard()+"\n");
+                    break;
+
+                case 10:
                     System.out.println("Are you sure you want to quit?");
                     System.out.println("1. Yes\n2. No");
                     choice = scan.nextInt();

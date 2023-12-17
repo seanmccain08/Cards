@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.util.ArrayList;
 
 public class DeckOfCards{
@@ -13,6 +14,8 @@ public class DeckOfCards{
     public static ArrayList<Card>hand2 = new ArrayList<Card>();
     public static ArrayList<Card>hand3 = new ArrayList<Card>();
     public static ArrayList<Card>hand4 = new ArrayList<Card>();
+    public static ArrayList<Card>discardPile = new ArrayList<Card>();
+    public static ArrayList<Card>flippedPile = new ArrayList<Card>();
 
     public DeckOfCards(){
 
@@ -31,7 +34,7 @@ public class DeckOfCards{
     }
     public String toString(){
 
-        String result = "";
+        String result = "Top\n_________\n";
         if(deck0.size() == 0){
 
             result+="The whole deck has already been dealt.";
@@ -44,7 +47,7 @@ public class DeckOfCards{
 
             }
         }
-        return result;
+        return result+"_________\nBottom\n";
 
     }
     public void shuffle(){
@@ -166,9 +169,10 @@ public class DeckOfCards{
         switch(players){
 
             case 2:
-                if(cards > deck0.size()){
+                if(cards > deck0.size()/2){
 
                     System.out.println("Not enough cards in the deck!");
+                    break;
 
                 }
                 for(int i = 0, player = 0; i<cards*2; i++){
@@ -192,6 +196,12 @@ public class DeckOfCards{
                 break;
 
             case 3:
+                if(cards > deck0.size()/3){
+
+                    System.out.println("Not enough cards in the deck!");
+                    break;
+
+                }
                 for(int i = 0, player = 0; i<cards*3; i++){
 
                     if(player == 0){
@@ -220,6 +230,12 @@ public class DeckOfCards{
                 break;
 
             case 4:
+                if(cards > deck0.size()/4){
+
+                    System.out.println("Not enough cards in the deck!");
+                    break;
+
+                }
                 for(int i = 0, player = 0; i<cards*4; i++){
 
                     if(player == 0){
@@ -246,7 +262,7 @@ public class DeckOfCards{
                     else{
 
                         player = 0;
-                        hand3.add(deck0.get(0));
+                        hand4.add(deck0.get(0));
                         deck0.remove(0);
 
                     }
@@ -260,5 +276,168 @@ public class DeckOfCards{
         }
 
     }
+    public String showHand(int x){
 
+        String result = "";
+        switch(x){
+
+            case 1:
+                if(hand1.size() == 0){
+
+                    return "Player 1 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 1:";
+                    for(int i = 0; i < hand1.size(); i++){
+
+                        result = result + "\n" +hand1.get(i).toString();
+
+                    }
+                }
+                break;
+
+            case 2:
+                if(hand2.size() == 0){
+
+                    return "Player 2 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 2:";
+                    for(int i = 0; i < hand2.size(); i++){
+
+                        result = result + "\n" +hand2.get(i).toString();
+
+                    }
+                }
+                break;
+
+            case 3:
+                if(hand3.size() == 0){
+
+                    return "Player 3 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 3:";
+                    for(int i = 0; i < hand3.size(); i++){
+
+                        result = result + "\n" +hand3.get(i).toString();
+
+                    }
+                }
+                break;
+
+            case 4:
+                if(hand4.size() == 0){
+
+                    return "Player 4 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 4:";
+                    for(int i = 0; i < hand4.size(); i++){
+
+                        result = result + "\n" +hand4.get(i).toString();
+
+                    }
+                }
+                break;
+
+            case 5:
+                if(hand1.size() == 0){
+
+                    result+="\nPlayer 1 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 1:";
+                    for(int i = 0; i < hand1.size(); i++){
+
+                        result = result + "\n" +hand1.get(i).toString();
+
+                    }
+                }
+                result+="\n";
+                if(hand2.size() == 0){
+
+                    result+="\nPlayer 2 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 2:";
+                    for(int i = 0; i < hand2.size(); i++){
+
+                        result = result + "\n" +hand2.get(i).toString();
+
+                    }
+                }
+                result+="\n";
+                if(hand3.size() == 0){
+
+                    result+="\nPlayer 3 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 3:";
+                    for(int i = 0; i < hand3.size(); i++){
+
+                        result = result + "\n" +hand3.get(i).toString();
+
+                    }
+                }
+                result+="\n";
+                if(hand4.size() == 0){
+
+                    result+="\nPlayer 4 has no cards yet.";
+
+                }
+                else{
+                    result+="\nPlayer 4:";
+                    for(int i = 0; i < hand4.size(); i++){
+
+                        result = result + "\n" +hand4.get(i).toString();
+
+                    }
+                }
+                break;
+
+            default:
+                return "Please make a valid choice";
+
+        }
+        return result+"\n";
+    }
+    public static void clearHands(){
+
+        hand1 = new ArrayList<Card>();
+        hand2 = new ArrayList<Card>();
+        hand3 = new ArrayList<Card>();
+        hand4 = new ArrayList<Card>();
+        discardPile = new ArrayList<Card>();
+        flippedPile = new ArrayList<Card>();
+
+    }
+    public void burn(){
+
+        Card temp = deck0.get(0);
+        discardPile.add(temp);
+        deck0.remove(0);
+        System.out.println("Burned the top card.");
+
+    }
+    public void flip(){
+
+        Card temp = deck0.get(0);
+        flippedPile.add(temp);
+        deck0.remove(0);
+        System.out.println("Successfully flipped the new top card: the "+flippedPile.get(flippedPile.size()-1).toString()+"!\n");
+
+    }
+    public String getTopCard(){
+
+        return "Top card: " + flippedPile.get(flippedPile.size()-1).toString();
+
+    }
 }
