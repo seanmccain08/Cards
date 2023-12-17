@@ -50,6 +50,20 @@ public class DeckOfCards{
         return result+"_________\nBottom\n";
 
     }
+
+/* Shuffling explanation:
+
+    The shuffle method works by going through a loop in which 'i' will equal each index of the deck of cards.
+
+    each go through of the loop selects a random index from the rest of the deck to swap it with using a temp variable.
+
+    example:
+    the first index of the deck is 0 -- the ace of spades. The last index is 51 -- the king of clubs.
+    on the first round of the loop, the random index ends up being 51.
+    the king of clubs is stored into temp, then index 51 is set to be the ace of spades.
+    Finally, index 0 is set to be temp -- the king of clubs.
+
+ */
     public void shuffle(){
 
         if(deck0.size() < 52){
